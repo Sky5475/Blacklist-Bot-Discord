@@ -49,4 +49,19 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
+// src/index.js
+
+const { config } = require('dotenv');
+config(); // lit le fichier .env
+
+const Discord = require('discord.js');
+const client = new Discord.Client({
+  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
+});
+
+client.once('ready', () => {
+  console.log(`Connecté en tant que ${client.user.tag}`);
+});
+
 client.login(process.env.TOKEN);
+
